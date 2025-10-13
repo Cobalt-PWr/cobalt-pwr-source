@@ -43,7 +43,7 @@ export default function App() {
 	return (
 		<div className="min-h-screen bg-gray-900 text-gray-100">
 			{/* Header */}
-			<header className="fixed w-full z-1000 bg-opacity-90 bg-gray-900 backdrop-blur-md transition-all duration-300" style={{ padding: `${Math.max(16, 32 - scrollY / 5)}px 0` }}>
+			<header className="fixed w-full z-1001 bg-opacity-90 bg-gray-900 backdrop-blur-md transition-all duration-300" style={{ padding: `${Math.max(16, 32 - scrollY / 5)}px 0` }}>
 				<div className="container mx-auto px-4 flex justify-between items-center">
 					<div className="flex items-center space-x-4">
 						<img

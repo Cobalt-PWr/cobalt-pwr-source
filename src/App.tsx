@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { MapPin, Beaker, Zap, GraduationCap, Mail, ChevronDown, Send, Rocket } from "lucide-react";
+import { MapPin, Beaker, Zap, GraduationCap, Mail, ChevronDown, Send, BatteryPlus } from "lucide-react";
 import placeholderImage from "@/assets/placeholder.svg";
 import logoImage from "@/assets/logo.png";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
@@ -97,14 +97,14 @@ export default function App() {
 							{
 								title: "Elektroosadzanie miedzi",
 								coordinator: "Klim Averkin",
-								icon: Rocket,
+								icon: Zap,
 								description:
 									"Projekt skupia się na badaniu procesu elektroosadzania miedzi na różnych podłożach. Celem jest optymalizacja parametrów procesu oraz analiza właściwości otrzymanych powłok miedzianych, które mogą znaleźć zastosowanie w elektronice i ochronie przed korozją.",
 							},
 							{
 								title: "Czarna masa",
 								coordinator: "Barbara Kasprzak",
-								icon: MapPin,
+								icon: BatteryPlus,
 								description:
 									"Projekt dotyczy odzysku i analizy tzw. czarnej masy, będącej pozostałością po recyklingu zużytych baterii litowo-jonowych. Celem jest opracowanie efektywnych metod separacji i oczyszczania składników czarnej masy, co pozwoli na ich ponowne wykorzystanie w produkcji nowych ogniw oraz ograniczenie negatywnego wpływu na środowisko.",
 							},

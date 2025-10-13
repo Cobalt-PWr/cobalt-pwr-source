@@ -102,7 +102,7 @@ export default function App() {
 					<p className="text-xl md:text-2xl mb-12 animate-fade-in-up animation-delay-200">
 						<CleanerText text={"Łączymy naukę z innowacją w Politechnice Wrocławskiej"} />
 					</p>
-					<a
+					<span
 						className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-blue-500 text-white animate-bounce cursor-pointer"
 						onClick={(e) => {
 							e.preventDefault();
@@ -110,7 +110,7 @@ export default function App() {
 						}}
 					>
 						<ChevronDown className="w-6 h-6" />
-					</a>
+					</span>
 				</div>
 			</section>
 
@@ -137,8 +137,8 @@ export default function App() {
 						].map((project, index) => (
 							<div key={index} className="bg-gray-800 rounded-lg shadow-lg p-6 transform transition duration-500 hover:scale-105 hover:bg-blue-900">
 								{project.icon && <project.icon className="w-12 h-12 text-blue-300 mb-4" />}
-								<h3 className="text-xl font-semibold mb-2">{project.title}</h3>
-								<h5 className="text-xl font-semibold mb-2">Koordynator: {project.coordinator}</h5>
+								<p className="text-xl font-semibold mb-2">{project.title}</p>
+								<p className="text-xl font-semibold mb-2">Koordynator: {project.coordinator}</p>
 								<p className="text-gray-300 text-pretty">
 									<CleanerText text={project.description} />
 								</p>
@@ -177,8 +177,8 @@ export default function App() {
 								<div className="w-24 h-24 bg-[#0047ab] rounded-full mx-auto mb-4 flex items-center justify-center border-4 border-blue-300 transition-all duration-300 group-hover:border-white">
 									<span className="text-white text-2xl font-bold">ICH</span>
 								</div>
-								<h3 className="text-xl font-semibold text-blue-300 group-hover:text-white">dr. inż. Ida Chojnacka</h3>
-								<h5 className="text-xl font-semibold text-blue-300 group-hover:text-white">Opiekun koła</h5>
+								<p className="text-xl font-semibold text-blue-300 group-hover:text-white">dr. inż. Ida Chojnacka</p>
+								<p className="text-xl font-semibold text-blue-300 group-hover:text-white">Opiekun koła</p>
 								<span className="underline text-blue-300">Przejdź do USOS</span>
 							</div>
 						</a>
@@ -200,8 +200,8 @@ export default function App() {
 												.join("")}
 										</span>
 									</div>
-									<h3 className="text-xl font-semibold text-blue-300 group-hover:text-white">{member.name}</h3>
-									<h5 className="text-xl font-semibold text-blue-300 group-hover:text-white">{member.role}</h5>
+									<p className="text-xl font-semibold text-blue-300 group-hover:text-white">{member.name}</p>
+									<p className="text-xl font-semibold text-blue-300 group-hover:text-white">{member.role}</p>
 								</div>
 							</div>
 						))}
@@ -287,7 +287,7 @@ export default function App() {
 					<h2 className="text-3xl font-bold text-center text-blue-300 mb-12">Skontaktuj się z nami</h2>
 					<a
 						href="mailto:cobalt.pwr@gmail.com"
-						className="w-full flex justify-center items-center px-4 py-3 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-800 text-lg font-semibold transition"
+						className="w-full flex justify-center items-center px-4 py-3 bg-[#0047ab] text-white rounded-md hover:bg-blue-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-800 text-lg font-semibold transition"
 					>
 						<Send className="w-5 h-5 mr-2" />
 						Napisz do nas maila

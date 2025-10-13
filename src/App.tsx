@@ -9,6 +9,7 @@ import L from "leaflet";
 // Fix for marker icon issues
 import icon from "leaflet/dist/images/marker-icon.png";
 import iconShadow from "leaflet/dist/images/marker-shadow.png";
+import { cn } from "./lib/utils";
 
 const DefaultIcon = L.icon({
 	iconUrl: icon,
@@ -21,6 +22,23 @@ L.Marker.prototype.options.icon = DefaultIcon;
 
 const GOOGLE_MAPS_URL = "https://maps.google.com/maps?q=51.108056,17.063917&z=16";
 const USOS_CLUB_SUPERVISOR_URL = "https://web.usos.pwr.edu.pl/kontroler.php?_action=katalog2/osoby/pokazOsobe&os_id=72006";
+
+const CleanerText = ({ className, text }: { className?: string; text: string }) => {
+	return (
+		<span className={cn("text-pretty", className)}>
+			{text
+				.split(" ")
+				.map((word) => {
+					if (word.length < 3) {
+						return word + "\u00A0"; // non-breaking space
+					}
+
+					return word + " ";
+				})
+				.join("")}
+		</span>
+	);
+};
 
 export default function App() {
 	const [scrollY, setScrollY] = useState(0);
@@ -78,11 +96,19 @@ export default function App() {
 			</header>
 
 			{/* Hero Section */}
-			<section className="pt-48 pb-20 px-4 bg-gradient-to-b from-[#0047ab] to-gray-900">
+			<section className="pt-48 pb-20 px-4 bg-gradient-to-b from-[#0047ab] to-gray-900 flex flex-col items-center justify-center h-screen md:h-full">
 				<div className="container mx-auto text-center">
 					<h2 className="text-4xl md:text-5xl font-bold mb-6 animate-fade-in-up">Odkrywamy Przyszłość Chemii</h2>
-					<p className="text-xl md:text-2xl mb-12 animate-fade-in-up animation-delay-200">Łączymy naukę z innowacją w Politechnice Wrocławskiej</p>
-					<a href="#founders" className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-blue-500 text-white animate-bounce">
+					<p className="text-xl md:text-2xl mb-12 animate-fade-in-up animation-delay-200">
+						<CleanerText text={"Łączymy naukę z innowacją w Politechnice Wrocławskiej"} />
+					</p>
+					<a
+						className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-blue-500 text-white animate-bounce cursor-pointer"
+						onClick={(e) => {
+							e.preventDefault();
+							document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" });
+						}}
+					>
 						<ChevronDown className="w-6 h-6" />
 					</a>
 				</div>
@@ -113,7 +139,9 @@ export default function App() {
 								{project.icon && <project.icon className="w-12 h-12 text-blue-300 mb-4" />}
 								<h3 className="text-xl font-semibold mb-2">{project.title}</h3>
 								<h5 className="text-xl font-semibold mb-2">Koordynator: {project.coordinator}</h5>
-								<p className="text-gray-300 text-pretty">{project.description}</p>
+								<p className="text-gray-300 text-pretty">
+									<CleanerText text={project.description} />
+								</p>
 							</div>
 						))}
 					</div>
@@ -132,7 +160,7 @@ export default function App() {
 						].map(({ icon: Icon, text }) => (
 							<div key={text} className="flex items-center space-x-4 bg-gray-700 p-6 rounded-lg shadow-md transform transition duration-500 hover:scale-105 hover:bg-blue-900">
 								<Icon className="w-12 h-12 text-blue-300 flex-shrink-0" />
-								<span className="text-lg">{text}</span>
+								<CleanerText className="text-lg text-pretty" text={text} />
 							</div>
 						))}
 					</div>
@@ -192,11 +220,11 @@ export default function App() {
 						className="inline-flex items-center justify-center text-xl bg-gray-700 px-8 py-4 rounded-full shadow-lg hover:bg-blue-900 transition duration-300 cursor-pointer"
 					>
 						<MapPin className="w-8 h-8 mr-4 text-blue-300" />
-						<span>Wydział Chemiczny, 2.24 A3</span>
+						<CleanerText text={"Wydział Chemiczny, 2.24 A3"} />
 					</a>
 					<div className="mt-12">
 						<div className="w-full h-96 bg-gray-700 rounded-lg overflow-hidden">
-							<MapContainer center={[51.108056, 17.063917]} zoom={18} scrollWheelZoom={false} style={{ width: "100%", height: "100%" }}>
+							<MapContainer center={[51.108056, 17.063917]} zoom={18} doubleClickZoom={false} dragging={false} scrollWheelZoom={false} style={{ width: "100%", height: "100%" }}>
 								<TileLayer attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
 								<Marker position={[51.108056, 17.063917]}>
 									<Popup>
@@ -279,7 +307,8 @@ export default function App() {
 								e.currentTarget.src = placeholderImage;
 							}}
 						/>
-						<p className="text-sm opacity-75">© 2024 Koło Naukowe Cobalt. Wszelkie prawa zastrzeżone.</p>
+						<p className="text-sm opacity-75">© 2024 Koło Naukowe Cobalt.</p>
+						<p className="text-sm opacity-75">Wszelkie prawa zastrzeżone.</p>
 						<p className="text-sm opacity-75">Autor strony: Kacper Pijacki</p>
 					</div>
 					<div className="text-center md:text-right space-y-4">

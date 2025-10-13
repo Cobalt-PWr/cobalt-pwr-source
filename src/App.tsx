@@ -2,23 +2,10 @@ import { useState, useEffect } from "react";
 import { MapPin, Beaker, Zap, GraduationCap, Mail, ChevronDown, Send, BatteryPlus } from "lucide-react";
 import placeholderImage from "@/assets/placeholder.svg";
 import logoImage from "@/assets/logo.png";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
-import "leaflet/dist/leaflet.css";
-import L from "leaflet";
-
-// Fix for marker icon issues
-import icon from "leaflet/dist/images/marker-icon.png";
-import iconShadow from "leaflet/dist/images/marker-shadow.png";
 import { cn } from "./lib/utils";
+import { Suspense, lazy } from "react";
 
-const DefaultIcon = L.icon({
-	iconUrl: icon,
-	shadowUrl: iconShadow,
-	iconSize: [25, 41],
-	iconAnchor: [12, 41],
-});
-
-L.Marker.prototype.options.icon = DefaultIcon;
+const MapSection = lazy(() => import("./components/MapSection"));
 
 const GOOGLE_MAPS_URL = "https://maps.google.com/maps?q=51.108056,17.063917&z=16";
 const USOS_CLUB_SUPERVISOR_URL = "https://web.usos.pwr.edu.pl/kontroler.php?_action=katalog2/osoby/pokazOsobe&os_id=72006";
@@ -68,6 +55,7 @@ export default function App() {
 							src="/favicon-96x96.png"
 							alt="Cobalt Logo"
 							className="w-12 h-12 bg-white rounded-full flex items-center justify-center p-1"
+							loading="lazy"
 							onError={(e) => {
 								e.currentTarget.src = placeholderImage;
 							}}
@@ -222,27 +210,9 @@ export default function App() {
 						<MapPin className="w-8 h-8 mr-4 text-blue-300" />
 						<CleanerText text={"Wydział Chemiczny, 2.24 A3"} />
 					</a>
-					<div className="mt-12">
-						<div className="w-full h-96 bg-gray-700 rounded-lg overflow-hidden">
-							<MapContainer center={[51.108056, 17.063917]} zoom={18} doubleClickZoom={false} dragging={false} scrollWheelZoom={false} style={{ width: "100%", height: "100%" }}>
-								<TileLayer attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-								<Marker position={[51.108056, 17.063917]}>
-									<Popup>
-										<div>
-											<p>
-												Wydział Chemiczny, 2.24 A3
-												<br />
-												Politechnika Wrocławska
-											</p>
-											<a href={GOOGLE_MAPS_URL} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline mt-2 inline-block">
-												Otwórz w Google Maps
-											</a>
-										</div>
-									</Popup>
-								</Marker>
-							</MapContainer>
-						</div>
-					</div>
+					<Suspense fallback={<div className="mt-12 w-full h-96 flex items-center justify-center bg-gray-700 rounded-lg">Ładowanie mapy...</div>}>
+						<MapSection />
+					</Suspense>
 				</div>
 			</section>
 
@@ -303,6 +273,7 @@ export default function App() {
 							src={logoImage}
 							alt="Politechnika Wrocławska Logo"
 							className="mb-4 h-[120px] bg-white rounded-2xl py-2 object-contain"
+							loading="lazy"
 							onError={(e) => {
 								e.currentTarget.src = placeholderImage;
 							}}

@@ -4,6 +4,7 @@ import placeholderImage from "@/assets/placeholder.svg";
 import logoImage from "@/assets/logo.png";
 import { cn } from "./lib/utils";
 import { Suspense, lazy } from "react";
+import { ClientOnly } from "vite-react-ssg";
 
 const MapSection = lazy(() => import("./components/MapSection"));
 
@@ -211,7 +212,11 @@ export default function App() {
 						<CleanerText text={"Wydział Chemiczny, 2.24 A3"} />
 					</a>
 					<Suspense fallback={<div className="mt-12 w-full h-96 flex items-center justify-center bg-gray-700 rounded-lg">Ładowanie mapy...</div>}>
-						<MapSection />
+						<ClientOnly>
+							{() => {
+								return <MapSection />;
+							}}
+						</ClientOnly>
 					</Suspense>
 				</div>
 			</section>

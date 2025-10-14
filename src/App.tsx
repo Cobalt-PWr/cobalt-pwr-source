@@ -120,7 +120,7 @@ export default function App() {
 								coordinator: "Barbara Kasprzak",
 								icon: BatteryPlus,
 								description:
-									"Projekt dotyczy odzysku i analizy tzw. czarnej masy, będącej pozostałością po recyklingu zużytych baterii litowo-jonowych. Celem jest opracowanie efektywnych metod separacji i oczyszczania składników czarnej masy, co pozwoli na ich ponowne wykorzystanie w produkcji nowych ogniw oraz ograniczenie negatywnego wpływu na środowisko.",
+									"Projekt dotyczy odzysku i analizy tzw. czarnej masy, będącej pozostałością po recyklingu zużytych baterii alkalicznych cynkowo-manganowych. Celem jest opracowanie efektywnych metod odzysku i oczyszczania składników czarnej masy, co pozwoli na ich ponowne wykorzystanie w produkcji nowych ogniw oraz ograniczenie negatywnego wpływu na środowisko.",
 							},
 						].map((project, index) => (
 							<div key={index} className="bg-gray-800 rounded-lg shadow-lg p-6 transform transition duration-500 hover:scale-105 hover:bg-blue-900">

@@ -176,7 +176,7 @@ export default function App() {
 						{[
 							{ name: "Klim Averkin", role: "Prezes" },
 							{ name: "Karolina Pijacka", role: "Wiceprezes" },
-							{ name: "Maksymilian Maćkiewicz", role: "Lider ds. finansów" },
+							{ name: "Kacper Pijacki", role: "Lider ds. finansów" },
 							{ name: "Grażyna Witek", role: "Sekretarz" },
 						].map((member) => (
 							<div key={`${member.name}-${member.role}`} className="group">

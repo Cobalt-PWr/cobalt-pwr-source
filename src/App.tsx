@@ -2,31 +2,19 @@ import { useState, useEffect } from "react";
 import { MapPin, Beaker, Zap, GraduationCap, Mail, ChevronDown, Send, BatteryPlus } from "lucide-react";
 import placeholderImage from "@/assets/placeholder.svg";
 import logoImage from "@/assets/logo.png";
-import { cn } from "./lib/utils";
+import qrCodeImage from "@/assets/qrcode.svg";
+import CleanerText from "@/components/CleanerText";
 import { Suspense, lazy } from "react";
 import { ClientOnly } from "vite-react-ssg";
+import CzarnaMasaProject from "@/components/CzarnaMasaProject";
+import ElektroosadzanieMiedzi from "@/components/ElektroosadzanieMiedzi";
 
 const MapSection = lazy(() => import("./components/MapSection"));
 
 const GOOGLE_MAPS_URL = "https://maps.google.com/maps?q=51.108056,17.063917&z=16";
 const USOS_CLUB_SUPERVISOR_URL = "https://web.usos.pwr.edu.pl/kontroler.php?_action=katalog2/osoby/pokazOsobe&os_id=72006";
 
-const CleanerText = ({ className, text }: { className?: string; text: string }) => {
-	return (
-		<span className={cn("text-pretty", className)}>
-			{text
-				.split(" ")
-				.map((word) => {
-					if (word.length < 3) {
-						return word + "\u00A0"; // non-breaking space
-					}
 
-					return word + " ";
-				})
-				.join("")}
-		</span>
-	);
-};
 
 export default function App() {
 	const [scrollY, setScrollY] = useState(0);
@@ -40,6 +28,8 @@ export default function App() {
 	const navItems = [
 		{ name: "Projekty", id: "projects" },
 		{ name: "Cele", id: "goals" },
+		{ name: "Elektroosadzanie miedzi", id: "elektroosadzanie-miedzi" },
+		{ name: "Czarna masa", id: "czarna-masa" },
 		{ name: "Zarząd", id: "minutka" },
 		{ name: "Lokalizacja", id: "location" },
 		{ name: "Założyciele", id: "founders" },
@@ -89,7 +79,7 @@ export default function App() {
 				<div className="container mx-auto text-center">
 					<h2 className="text-4xl md:text-5xl font-bold mb-6 animate-fade-in-up">Odkrywamy Przyszłość Chemii</h2>
 					<p className="text-xl md:text-2xl mb-12 animate-fade-in-up animation-delay-200">
-						<CleanerText text={"Łączymy naukę z innowacją w Politechnice Wrocławskiej"} />
+						<CleanerText>Łączymy naukę z innowacją w Politechnice Wrocławskiej</CleanerText>
 					</p>
 					<span
 						className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-blue-500 text-white animate-bounce cursor-pointer"
@@ -111,6 +101,7 @@ export default function App() {
 						{[
 							{
 								title: "Elektroosadzanie miedzi",
+								id: "elektroosadzanie-miedzi",
 								coordinator: "Klim Averkin",
 								icon: Zap,
 								description:
@@ -118,18 +109,22 @@ export default function App() {
 							},
 							{
 								title: "Czarna masa",
+								id: "czarna-masa",
 								coordinator: "Barbara Kasprzak",
 								icon: BatteryPlus,
 								description:
 									"Projekt dotyczy odzysku i analizy tzw. czarnej masy, będącej pozostałością po recyklingu zużytych baterii alkalicznych cynkowo-manganowych. Celem jest opracowanie efektywnych metod odzysku i oczyszczania składników czarnej masy, co pozwoli na ich ponowne wykorzystanie w produkcji nowych ogniw oraz ograniczenie negatywnego wpływu na środowisko.",
 							},
 						].map((project, index) => (
-							<div key={index} className="bg-gray-800 rounded-lg shadow-lg p-6 transform transition duration-500 hover:scale-105 hover:bg-blue-900">
+							<div key={index} className="bg-gray-800 rounded-lg shadow-lg p-6 transform transition duration-500 hover:scale-105 hover:bg-blue-900" onClick={(e) => {
+								e.preventDefault();
+								document.getElementById(project.id)?.scrollIntoView({ behavior: "smooth" });
+							}}>
 								{project.icon && <project.icon className="w-12 h-12 text-blue-300 mb-4" />}
 								<p className="text-xl font-semibold mb-2">{project.title}</p>
 								<p className="text-xl font-semibold mb-2">Koordynator: {project.coordinator}</p>
 								<p className="text-gray-300 text-pretty">
-									<CleanerText text={project.description} />
+									<CleanerText>{project.description}</CleanerText>
 								</p>
 							</div>
 						))}
@@ -147,14 +142,18 @@ export default function App() {
 							{ icon: Zap, text: "Projektowanie Nowoczesnych Systemów Magazynowania Energii" },
 							{ icon: GraduationCap, text: "Edukacja i Szkolenia" },
 						].map(({ icon: Icon, text }) => (
-							<div key={text} className="flex items-center space-x-4 bg-gray-700 p-6 rounded-lg shadow-md transform transition duration-500 hover:scale-105 hover:bg-blue-900">
+							<div key={text} className="flex items-center space-x-4 bg-gray-700 p-6 rounded-lg shadow-md transform">
 								<Icon className="w-12 h-12 text-blue-300 flex-shrink-0" />
-								<CleanerText className="text-lg text-pretty" text={text} />
+								<CleanerText className="text-lg text-pretty">{text}</CleanerText>
 							</div>
 						))}
 					</div>
 				</div>
 			</section>
+
+			<ElektroosadzanieMiedzi />
+
+			<CzarnaMasaProject />
 
 			{/* Management Section */}
 			<section id="minutka" className="py-20 px-4 bg-gray-900">
@@ -209,7 +208,7 @@ export default function App() {
 						className="inline-flex items-center justify-center text-xl bg-gray-700 px-8 py-4 rounded-full shadow-lg hover:bg-blue-900 transition duration-300 cursor-pointer"
 					>
 						<MapPin className="w-8 h-8 mr-4 text-blue-300" />
-						<CleanerText text={"Wydział Chemiczny, 2.24 A3"} />
+						<CleanerText>Wydział Chemiczny, 2.24 A3</CleanerText>
 					</a>
 					<Suspense fallback={<div className="mt-12 w-full h-96 flex items-center justify-center bg-gray-700 rounded-lg">Ładowanie mapy...</div>}>
 						<ClientOnly>
@@ -271,7 +270,7 @@ export default function App() {
 			</section>
 
 			{/* Footer */}
-			<footer className="bg-[#0047ab] text-white py-12 px-4">
+			<footer className="bg-[#0047ab] text-white py-7 px-4">
 				<div className="container mx-auto flex flex-col md:flex-row items-center justify-between">
 					<div className="mb-8 md:mb-0 flex items-center flex-col">
 						<img
@@ -286,6 +285,15 @@ export default function App() {
 						<p className="text-sm opacity-75">© 2024 Koło Naukowe Cobalt.</p>
 						<p className="text-sm opacity-75">Wszelkie prawa zastrzeżone.</p>
 						<p className="text-sm opacity-75">Autor strony: Kacper Pijacki</p>
+					</div>
+					<div className="border-blue-300/40 text-center">
+						<p className="text-lg font-semibold mb-4">Szybkie udostępnienie strony</p>
+						<img
+							src={qrCodeImage}
+							alt="Kod QR prowadzący do strony Koła Naukowego Cobalt"
+							className="mx-auto h-48 w-48 rounded-lg bg-white p-2"
+							loading="lazy"
+						/>
 					</div>
 					<div className="text-center md:text-right space-y-4">
 						<h3 className="text-2xl font-bold mb-4">Kontakt</h3>

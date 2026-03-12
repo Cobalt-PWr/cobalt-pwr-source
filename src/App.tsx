@@ -79,7 +79,7 @@ export default function App() {
 				<div className="container mx-auto text-center">
 					<h2 className="text-4xl md:text-5xl font-bold mb-6 animate-fade-in-up">Odkrywamy Przyszłość Chemii</h2>
 					<p className="text-xl md:text-2xl mb-12 animate-fade-in-up animation-delay-200">
-						<CleanerText>Łączymy naukę z innowacją w Politechnice Wrocławskiej</CleanerText>
+						<CleanerText>Łączymy naukę z innowacją na Politechnice Wrocławskiej</CleanerText>
 					</p>
 					<span
 						className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-blue-500 text-white animate-bounce cursor-pointer"
@@ -165,7 +165,7 @@ export default function App() {
 								<div className="w-24 h-24 bg-[#0047ab] rounded-full mx-auto mb-4 flex items-center justify-center border-4 border-blue-300 transition-all duration-300 group-hover:border-white">
 									<span className="text-white text-2xl font-bold">ICH</span>
 								</div>
-								<p className="text-xl font-semibold text-blue-300 group-hover:text-white">dr. inż. Ida Chojnacka</p>
+								<p className="text-xl font-semibold text-blue-300 group-hover:text-white">dr inż. Ida Chojnacka</p>
 								<p className="text-xl font-semibold text-blue-300 group-hover:text-white">Opiekun koła</p>
 								<span className="underline text-blue-300">Przejdź do USOS</span>
 							</div>
@@ -230,7 +230,7 @@ export default function App() {
 								<div className="w-24 h-24 bg-[#0047ab] rounded-full mx-auto mb-4 flex items-center justify-center border-4 border-blue-300 transition-all duration-300 group-hover:border-white">
 									<span className="text-white text-2xl font-bold">ICH</span>
 								</div>
-								<h3 className="text-xl font-semibold text-blue-300 group-hover:text-white">dr. inż. Ida Chojnacka</h3>
+								<h3 className="text-xl font-semibold text-blue-300 group-hover:text-white">dr inż. Ida Chojnacka</h3>
 								<span className="underline text-blue-300">Przejdź do USOS</span>
 							</div>
 						</a>

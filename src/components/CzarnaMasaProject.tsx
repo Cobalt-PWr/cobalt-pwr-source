@@ -342,7 +342,7 @@ const CzarnaMasaProject = () => {
 								<div className="border-t border-gray-600 p-4 bg-gray-750">
 									<p className="text-gray-300 text-sm leading-relaxed mb-3">
 										<CleanerText>
-											Kolejnym etapem jest <span className="font-bold">łużowanie</span> – proces
+											Kolejnym etapem jest <span className="font-bold">ługowanie</span> – proces
 											polegający na rozpuszczaniu wybranych składników materiału w odpowiednim
 											roztworze (najczęściej kwasu). Podczas tego procesu:
 										</CleanerText>
@@ -362,10 +362,10 @@ const CzarnaMasaProject = () => {
 									<p className="text-gray-300 text-sm leading-relaxed mb-3">
 										<CleanerText>
 											Aby ocenić skuteczność procesu, analizuje się{" "}
-											<span className="font-bold">kinetkę łużowania</span>, czyli szybkość
+											<span className="font-bold">kinetkę ługowania</span>, czyli szybkość
 											przechodzenia metali do roztworu w czasie. Na podstawie wyników eksperymentów
 											sporządza się wykresy przedstawiające{" "}
-											<span className="font-bold">stopień wyłużowania metalu w funkcji czasu procesu</span>.
+											<span className="font-bold">stopień wyługowania metalu w funkcji czasu procesu</span>.
 											Takie wykresy pozwalają określić:
 										</CleanerText>
 									</p>
@@ -385,8 +385,8 @@ const CzarnaMasaProject = () => {
 									</ul>
 									<p className="text-gray-300 text-sm leading-relaxed mb-4">
 										<CleanerText>
-											Dzięki analizie kinetyki łużowania wiemy, że przy zastosowaniu reduktora w
-											trakcie łużowania stopień odzysku manganu wzrasta z 30% do 80%.
+											Dzięki analizie kinetyki ługowania wiemy, że przy zastosowaniu reduktora w
+											trakcie ługowania stopień odzysku manganu wzrasta z 30% do 80%.
 										</CleanerText>
 									</p>
 									<img
@@ -397,7 +397,7 @@ const CzarnaMasaProject = () => {
 									/>
 									<p className="text-gray-300 text-sm leading-relaxed">
 										<CleanerText>
-											Skuteczność łużowania zależy od wielu czynników, takich jak:
+											Skuteczność ługowania zależy od wielu czynników, takich jak:
 										</CleanerText>
 									</p>
 									<ul className="space-y-1 mt-2 text-gray-300 text-sm">
@@ -448,7 +448,7 @@ const CzarnaMasaProject = () => {
 										<CleanerText>
 											Elektroliza jest jedną z kluczowych metod stosowanych w projekcie{" "}
 											<span className="font-bold">Czarna Masa</span> do odzysku metali z roztworu
-											powstałego po łużowaniu czarnej masy.
+											powstałego po ługowaniu czarnej masy.
 										</CleanerText>
 									</p>
 									<p className="text-gray-300 text-sm leading-relaxed mb-3">
